@@ -30,8 +30,8 @@ SELECT setval('assessment_platform.usuarios_id_seq', (SELECT MAX(id) FROM assess
 -- CUESTIONARIO DE EJEMPLO
 -- ============================================
 
-INSERT INTO assessment_platform.cuestionarios (nombre, descripcion, tiempo_limite, cantidad_preguntas, activo, creado_por)
-VALUES ('Evaluacion Programacion Basica', 'Evaluacion de conocimientos basicos de programacion incluyendo Java, Python y JavaScript con preguntas teoricas y de codigo', 60, 5, TRUE, 1);
+INSERT INTO assessment_platform.cuestionarios (nombre, descripcion, tiempo_limite, cantidad_preguntas, max_intentos, activo, creado_por)
+VALUES ('Evaluacion Programacion Basica', 'Evaluacion de conocimientos basicos de programacion incluyendo Java, Python y JavaScript con preguntas teoricas y de codigo', 60, 5, 3, TRUE, 1);
 
 -- ============================================
 -- PREGUNTAS (5 preguntas, 20 puntos cada una = 100)
