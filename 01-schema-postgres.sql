@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS cuestionarios (
     descripcion TEXT,
     tiempo_limite INT NOT NULL,
     cantidad_preguntas INT NOT NULL DEFAULT 0,
+    max_intentos INT NOT NULL,
     activo BOOLEAN NOT NULL DEFAULT TRUE,
     creado_por BIGINT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -50,9 +51,19 @@ CREATE TABLE IF NOT EXISTS preguntas (
     titulo VARCHAR(300) NOT NULL,
     descripcion TEXT,
     tipo_pregunta VARCHAR(30) NOT NULL,
-    puntaje DECIMAL(5,2) NOT NULL DEFAULT 1.00,
+    puntaje DECIMAL(5,2) NOT NULL DEFAULT 1.00
+);
+
+-- ============================================
+-- TABLA DE UNION: CUESTIONARIO <-> PREGUNTAS (M2M)
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS cuestionario_preguntas (
     cuestionario_id BIGINT NOT NULL,
-    FOREIGN KEY (cuestionario_id) REFERENCES cuestionarios(id) ON DELETE CASCADE
+    pregunta_id BIGINT NOT NULL,
+    PRIMARY KEY (cuestionario_id, pregunta_id),
+    FOREIGN KEY (cuestionario_id) REFERENCES cuestionarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (pregunta_id) REFERENCES preguntas(id) ON DELETE CASCADE
 );
 
 -- ============================================
@@ -102,6 +113,7 @@ CREATE TABLE IF NOT EXISTS intentos_examen (
     fecha_fin TIMESTAMP,
     estado VARCHAR(20) NOT NULL DEFAULT 'EN_PROGRESO',
     puntaje_total DECIMAL(5,2),
+    puntaje_maximo DECIMAL(5,2),
     tiempo_consumido INT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (candidato_id) REFERENCES usuarios(id),

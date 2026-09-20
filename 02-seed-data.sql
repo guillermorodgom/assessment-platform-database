@@ -38,24 +38,34 @@ VALUES ('Evaluacion Programacion Basica', 'Evaluacion de conocimientos basicos d
 -- ============================================
 
 -- Pregunta 1: Codigo (Java, Python, JavaScript)
-INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje, cuestionario_id)
-VALUES ('Suma de dos numeros', 'Escriba una funcion que reciba dos numeros enteros por entrada estandar (cada uno en una linea) y retorne su suma.', 'CODIGO', 20.00, 1);
+INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje)
+VALUES ('Suma de dos numeros', 'Escriba una funcion que reciba dos numeros enteros por entrada estandar (cada uno en una linea) y retorne su suma.', 'CODIGO', 20.00);
 
 -- Pregunta 2: Codigo (Python, JavaScript)
-INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje, cuestionario_id)
-VALUES ('Numero par o impar', 'Escriba un programa que lea un numero entero de la entrada estandar e imprima "par" si es par o "impar" si es impar.', 'CODIGO', 20.00, 1);
+INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje)
+VALUES ('Numero par o impar', 'Escriba un programa que lea un numero entero de la entrada estandar e imprima "par" si es par o "impar" si es impar.', 'CODIGO', 20.00);
 
 -- Pregunta 3: Codigo (JavaScript, Python, Java)
-INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje, cuestionario_id)
-VALUES ('Invertir un string', 'Escriba un programa que lea un string de la entrada estandar e imprima el string invertido.', 'CODIGO', 20.00, 1);
+INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje)
+VALUES ('Invertir un string', 'Escriba un programa que lea un string de la entrada estandar e imprima el string invertido.', 'CODIGO', 20.00);
 
 -- Pregunta 4: Unica respuesta
-INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje, cuestionario_id)
-VALUES ('Paradigma de Java', 'Cual es el paradigma principal de programacion de Java?', 'OPCION_UNICA', 20.00, 1);
+INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje)
+VALUES ('Paradigma de Java', 'Cual es el paradigma principal de programacion de Java?', 'OPCION_UNICA', 20.00);
 
 -- Pregunta 5: Multiple respuesta
-INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje, cuestionario_id)
-VALUES ('Tipos primitivos en Java', 'Cuales de los siguientes son tipos primitivos en Java? (seleccione todos los correctos)', 'OPCION_MULTIPLE', 20.00, 1);
+INSERT INTO assessment_platform.preguntas (titulo, descripcion, tipo_pregunta, puntaje)
+VALUES ('Tipos primitivos en Java', 'Cuales de los siguientes son tipos primitivos en Java? (seleccione todos los correctos)', 'OPCION_MULTIPLE', 20.00);
+
+-- ============================================
+-- ASOCIAR PREGUNTAS AL CUESTIONARIO (M2M)
+-- ============================================
+
+INSERT INTO assessment_platform.cuestionario_preguntas (cuestionario_id, pregunta_id) VALUES (1, 1);
+INSERT INTO assessment_platform.cuestionario_preguntas (cuestionario_id, pregunta_id) VALUES (1, 2);
+INSERT INTO assessment_platform.cuestionario_preguntas (cuestionario_id, pregunta_id) VALUES (1, 3);
+INSERT INTO assessment_platform.cuestionario_preguntas (cuestionario_id, pregunta_id) VALUES (1, 4);
+INSERT INTO assessment_platform.cuestionario_preguntas (cuestionario_id, pregunta_id) VALUES (1, 5);
 
 -- ============================================
 -- LENGUAJES PERMITIDOS POR PREGUNTA
